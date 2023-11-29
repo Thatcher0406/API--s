@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded',function() {
     fetch("http://localhost:5000/getAll")
     .then(response => response.json())
@@ -5,7 +6,7 @@ document.addEventListener('DOMContentLoaded',function() {
     
 });
 
-const button = document.querySelector('#Add name btn');
+const addBtn = document.querySelector('#Addnamebtn');
 
 addBtn.onclick = function(){
     const Input = document.querySelector('#name');

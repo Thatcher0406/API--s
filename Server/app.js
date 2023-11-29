@@ -1,4 +1,4 @@
-const express= require('express');
+const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -8,19 +8,19 @@ const dbService = require('./dbService');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 
 //create a route
-app.post('/insert', (request, response) => {
-    const {name}= req.body;
-const db = dbService.getDbServiceInstance();
+app.post('/insert', (req, res) => {
+    const { name } = req.body;
+    const db = dbService.getDbServiceInstance();
 
-const result = db.insertNewName(name);
+    const result = db.insertNewName(name);
 
-result
-.then(data => res.json({success: true}))
-.catch(err => console.log(err));
+    result
+        .then(data => res.json({ success: true }))
+        .catch(err => console.log(err));
 
 });
 
@@ -31,8 +31,8 @@ app.get('/getAll', (req, res) => {
     const result = db.getAllData();
 
     result
-    .then(data => res.json({data: data}))
-    .catch(err => console.log(err));
+        .then(data => res.json({ data: data }))
+        .catch(err => console.log(err));
 
 });
 //update
